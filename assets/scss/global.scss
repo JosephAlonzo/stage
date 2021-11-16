@@ -1,0 +1,16 @@
+// customize some Bootstrap variables
+$primary: darken(#d17905, 20%);
+$danger: #c50f12;
+$enable-gradients: true;
+
+$theme-colors: (
+  "blue": 428bca,
+  "green": #b2c326,
+  "purple": #6b0392,
+  "orange": #d17905,
+  "red-light": #f05b4f,
+  "greenflash": #2AFF1C,
+);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";

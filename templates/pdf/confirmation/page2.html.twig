@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <style>
+        p 
+        {
+            font-family: 'Times new roman';
+            font-size: 12px;
+        }
+
+        .text-right{
+            text-align: right;
+        }
+
+        .text-center{
+            text-align: center;
+        }
+
+        .text-left{
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .info{
+            border: 2px solid #000000;
+            margin-left: auto;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 12px;
+            font-family: 'Times new roman';
+        } 
+
+        .test {
+            width:100%;
+            height:100%;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            border: 1px solid black;
+        }
+
+        .selected {
+            background-color: #D991D2;
+        }
+        {% if test  is defined  %}
+            body{
+                margin: 0px;
+                background-color: rgb(82, 86, 89);
+            }
+            .sheet{
+                background-color: #fff;
+                width: 50%;
+                margin: auto;
+                padding: 50pt 50pt;
+                height: 100%;
+            }
+        {% endif %}
+    </style>
+
+    <div class="sheet">
+
+        <p><b><u>Fiche de contacts: </u></b></p>
+        <p>Dossier suivi par {{orientationSheet.socialWorker.user.firstName|capitalize}} {{orientationSheet.socialWorker.user.lastName|upper}} - Responsable du dispositif Tremplin Sport: {{orientationSheet.socialWorker.user.phoneNumber|upper}}</p>
+
+        <table style="width:100%">
+            <tr>
+                <th> Activités</th>
+                <th> Prenóm de L'éducateur sportif</th> 
+                <th> Numéro de téléphone</th>
+            </tr>
+            {% for educator in educators %}
+                <tr>
+                    <td>
+                    {% for key, activity in educator.activities %}
+                        {{activity.name}}{% if key+1 != educator.activities|length %},{% endif %}
+                    {% endfor %}
+                    </td>
+                    <td class="text-center">{{educator.user.firstName|capitalize}} {{educator.user.lastName|upper}}</td>
+                    <td>{{educator.user.phoneNumber}}</td>
+                </tr>
+            {% endfor %}
+            
+        </table>
+        <br>
+        <br>
+        
+        <img src="{{ asset('/uploads/planning/planning.jpg') }}" alt="planning" width="700">
+        
+        {# <table style="width:80%">
+            <tr>
+                <th colspan="3" class="text-center"><br><p>PROGRAMME <br> {{ ("months."~quarter.startDate|date("F")|lower )|trans|upper}} - {{ ("months."~quarter.endDate|date("F")|lower )|trans|upper}} {{ quarter.startDate|date("Y")}}</p><br></th> 
+            </tr>
+            {% set daysOfWeek = ["", 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] %}
+            {% for planning in plannings %}
+            {% set class = ''%}
+            {% for activitySelected in orientationSheet.activities %}
+                {% if activitySelected.name == planning.activity.name %}
+                    {% set class = 'selected'%}
+                {% endif %}
+            {% endfor %}
+            <tr class="test {{class}}">
+                <td class="text-center">
+                    <p>
+                        {{ ('days.'~daysOfWeek[planning.day])|trans}} <br> 
+                        {{planning.BeginningTime|date("H\\hi")}} - {{planning.endingTime|date("H\\hi")}} <br>
+                    </p>
+                </td>
+                <td class="text-center"> 
+                    <p>
+                        <b>{{planning.activity.name}}</b> - {{planning.place.name}} <br>
+                        {{planning.place.address}} - {{planning.place.city.name|upper}} <br>
+                    </p>
+                </td>
+                <td>
+                    <p class="text-center">
+                        à partir du <br>
+                        {{planning.startDate|date("d")}} {{('months.'~planning.startDate|date("F")|lower )|trans}}<br>
+                        {{planning.numberSessions}} Séances <br>
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+            
+            <tr>
+                <td class="text-center" colspan="3">
+                    <p>
+                        <b>Pas d'activés pendant les vacances scolaires et jours féries</b><br>
+                        Réinscription obligatoire à chaque trimestre auprès de votre Travailleur Social.<br>
+                        TREMPLIN SPORT - CDOS 54 - 3 avenue du Rhin - 54320 MAXEVILLE - tél: 03 83 67 01 84<br>
+                        insertion@cdos54.fr - tremplinsport54.wixsite.com/cdos54<br>
+                    </p>
+                </td>
+            </tr>
+        </table> #}
+
+    </div>
+</body>
+</html>
+

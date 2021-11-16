@@ -1,0 +1,26 @@
+App\Entity\Security\User:
+  properties:
+    phoneNumber:
+      - Regex:
+          pattern: '/(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/'
+          htmlPattern: '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}'
+          match:   true
+          message: phone number invalid
+
+App\Entity\Sport\Structure:
+  properties:
+    phoneNumber:
+      - Regex:
+          pattern: '/(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/'
+          htmlPattern: '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}'
+          match:   true
+          message: phone number invalid
+
+App\Entity\Sport\Beneficiary:
+  properties:
+    phoneNumber:
+      - Regex:
+          pattern: '/(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/'
+          htmlPattern: '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}'
+          match:   true
+          message: phone number invalid

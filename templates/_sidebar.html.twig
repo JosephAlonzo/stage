@@ -1,0 +1,64 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('homepage')}}">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">{{ 'label.dashboard'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-admin" aria-expanded="false" aria-controls="ui-admin">
+                <i class="mdi mdi-hammer-wrench menu-icon"></i>
+                <span class="menu-title">{{ 'label.admin'|trans }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-admin">
+                <ul class="nav flex-column sub-menu">
+                    {% if is_granted('ROLE_ADVENSYS') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('users_list') }}">{{ 'label.users'|trans }}</a></li>    
+                        <li class="nav-item"><a class="nav-link" href="{{ path('tenants_list') }}">{{ 'label.tenants'|trans }}</a></li>    
+                    {% endif %}
+                    {% if is_granted('ROLE_MANAGER') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('activities_list') }}">{{ 'label.activities'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('cities_list') }}">{{ 'label.cities'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('places_list') }}">{{ 'label.places'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('social_workers_list') }}">{{ 'label.social_workers'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('educators_list') }}">{{ 'label.educators'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('structures_list') }}">{{ 'label.structure'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('holidays_list') }}">{{ 'label.holiday'|trans }}</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-docs" aria-expanded="false" aria-controls="ui-admin">
+                <i class="mdi mdi-file-document-outline menu-icon"></i>
+                <span class="menu-title">{{ 'label.docs'|trans }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-docs">
+                <ul class="nav flex-column sub-menu">
+                    {% if is_granted('ROLE_SOCIAL_WORKER') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('orientation_sheets_list') }}">{{ 'label.orientation_sheets'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('attendance_sheets_list') }}">{{ 'label.attendance_sheets'|trans }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-planning" aria-expanded="false" aria-controls="ui-admin">
+                <i class="mdi mdi-calendar menu-icon"></i>
+                <span class="menu-title">{{ 'label.planning'|trans }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-planning">
+                <ul class="nav flex-column sub-menu">
+                    {% if is_granted('ROLE_MANAGER') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('plannings_list') }}">{{ 'label.planning'|trans }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

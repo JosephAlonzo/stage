@@ -1,0 +1,9 @@
+{% for label, messages in app.session.flashbag.all %}
+    {% for message in messages %}
+    <div class="container-fluid p-0">
+        <div class="w-100 text-center bg-gradient-{{ label }}" style="padding:10px; color:black"> 
+            {{message|raw|trans}} 
+        </div>
+    </div>
+    {% endfor %}
+{% endfor %}

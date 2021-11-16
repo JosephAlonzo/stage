@@ -1,0 +1,17 @@
+<p class="text-right" > À {{orientationSheet.socialWorker.structure.city.name}}, le {{ "now"|date("d")}} {{('months.'~"now"|date("F")|lower )|trans}}</p>
+
+<p><i><u>Object:</u></i> Confirmation d'inscription au <i>dispositif Tremplin Sport</i></p>
+
+<p><b>{{('pdf.gender.'~orientationSheet.beneficiary.gender )|trans}},</b></p>
+
+<p class="first">Par la présente, nous vous confirmons votre inscription au dispositif TREMPLIN SPORT. </p>
+
+<p>Vous vous étes inscrit(e) à/aux activité(s)
+{% for key, element in orientationSheet.plannings %}
+    {% if element.confirmed %}
+        <b>{{element.planning.activity.name}}</b>{% if orientationSheet.plannings|length != key+1 %},{% else %}.{% endif %}
+    {% endif %}
+{% endfor %}
+Votre premiére séance aura lieu à partir du <b>{{orientationSheet.startDate|date("d")}} {{('months.'~orientationSheet.startDate|date("F")|lower )|trans}}.</b></p>
+
+<p>Vous trouverez ci-joint un PDF indiquant les informations pertinentes</p>

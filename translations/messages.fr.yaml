@@ -1,0 +1,271 @@
+appName: tremplin
+entity:
+    user:
+        singular: utilisateur
+        plural: utilisateurs
+        article: un
+        article_plural: aux
+        table: 
+            username: Login
+            password: Mot de passe
+            repeat_password: Mot de passe
+            roles: Rôles
+            actif: Actif
+    city:
+        singular: ville
+        plural: villes
+        article: une
+        article_plural: aux
+        table: 
+            name: Nom
+            postalCode: Code Postal
+    activity:
+        singular: activité
+        plural: activités
+        article: une
+        article_plural: aux
+        table: 
+            name: Nom
+            educator: Educateur
+            color: Couleur
+            maxPlaces: Nombre maximum de places
+    social_worker:
+        singular: travailleur social
+        plural: travailleurs sociaux
+        article: un
+        article_plural: aux
+        table: 
+            firstName: Prenom
+            lastName: Nom
+            origin: Origine de l’orientation
+            address: Adresse
+            phoneNumber: Tél. standard
+            email: email
+            signature: signature
+            city: ville
+            structure: Structure
+
+    educator:
+        singular: educateur
+        plural: educateurs
+        article: un
+        article_plural: aux
+        table: 
+            firstName: Prenom
+            lastName: Nom
+            email: E-mail
+            phoneNumber: Tél
+            
+    structure:
+        singular: structure
+        plural: structures
+        article: une
+        article_plural: aux
+        table: 
+            name: Nom
+            email: E-mail
+            phoneNumber: Tél
+            address: Adresse
+            city: ville
+
+    holiday:
+        singular: jour férié
+        plural: jours fériés
+        article: un
+        article_plural: aux
+        table: 
+            name: Nom
+            startDate: Date de debut
+            endDate: Date de fin
+
+    planning:
+        singular: planning
+        plural: plannings
+        article: un
+        article_plural: aux
+        table: 
+            startDate: Date de debut
+            beginningTime: Heure de debut
+            endingTime: Heure de fin
+            numberSessions: Nombre de séances
+            maxPlaces: Nombre maximum de places
+            day: Jour 
+            status: Status 
+            activity: Activité
+            place: Lieu
+
+    orientation_sheet:
+        singular: fiche d'orientation
+        plural: fiches d'orientation
+        article: une
+        article_plural: aux
+        table: 
+            sendingDate: Date d'envoi 
+            situation: Exposé de la situation
+            axe: Axe(s) de travail 
+            photoAuthorization: Autorise d’être pris en photo
+            confirmed: Confirmé
+            activities: Activités
+            social_worker: Travailleur Social
+            startDate: Date de debut
+
+    attendance_sheet:
+        singular: fiche d'appel
+        plural: fiches d'appel
+        article: une
+        article_plural: aux
+        table: 
+            lastName: Nom
+            firstName: Prenom
+            axe: Axe(s) de travail 
+            startDate: Date de debut
+
+            activity: Activité
+            numberSessions: Nombre de séances
+            attendances: Présences
+            cycle: Cycle
+
+    beneficiary:
+        singular: bénéficiaire
+        plural: bénéficiaires
+        article: un
+        article_plural: aux
+        table: 
+            name: Prenom
+            lastName: Nom
+            gender: Genre
+            familySituation: Situation familiale
+            numberChildren: Nombre d’enfants
+            dateBirth: Date de Naissance
+            address: Adresse
+            city: Ville
+            phoneNumber: Tél
+            email: E-mail
+            lodging: Hébergement de la personne 
+            medicalCover: Couverture médicale
+            resourcesReceived: Ressources perçues 
+    
+    place:
+        singular: Lieu
+        plural: Lieux
+        article: un
+        article_plural: aux
+        table: 
+            name: Nom
+            address: Adresse
+            city: Ville
+
+    tenant:
+        singular: tenant
+        plural: tenants
+        article: un
+        article_plural: aux
+        table: 
+            cdosName: Nom du C.D.O.S 
+            cdosNumber: Numéro du C.D.O.S
+            siret: Numéro SIRET
+            codeApe: Code APE
+            address: Adresse
+            city: ville
+            phoneNumber: Tél
+            email: E-mail
+            siteInternet: Site d'internet 
+
+            users: Utilisateurs
+            socialWorker: Travailleurs Sociaux
+            educators: Educateurs
+            activities: Activités 
+
+    general:
+        crud:
+            required_fields: '* champs obligatoires'
+            information: Information
+            access_information: Information d'accès
+            html:
+                title_read: Gestion des
+                title_create: Création d'
+                title_update: Modification d'
+            read: Liste des
+            create: Ajouter
+            update: Modifier
+        table:
+            actions: Actions
+            none: Non renseigné
+email:
+    subject: 
+        confirmation: Confirmation d'inscription au dispositif Tremplin Sport
+label:
+    users : Utilisateurs
+    tenants: Tenants
+    activities : Activités
+    cities: Villes
+    social_workers: Travailleurs sociaux
+    orientation_sheets: Fiches d'orientation
+    attendance_sheets: Fiches d'appel
+    places: Lieux
+    educators: Educateurs
+    structure: Structure
+    holiday: Jours Fériés
+    admin : Administration
+    docs : Documents
+    planning : Planning
+    dashboard : Tableau du bord
+    logout : Se déconnecter
+    password : Mot de passe
+    username : Identifiant
+    removing: Supprimer
+    confirmed: Confirmé
+    not_confirmed: Pas confirmé
+
+login :
+    label :
+        title : Connexion
+        password : Mot de passe
+        username : Identifiant
+
+messages:
+    confirm_delete_item: confirmer la suppression des éléments
+    sended_mail: L'email a été bien envoyé
+    failed_send_mail: L' email n'a pas été envoyé car aucune des activités sélectionnées ne dispose de suffisamment d'espace pour inscrire plus de bénéficiaires
+    data_created: Élément ajouté avec succès
+    data_updated: Élément modifié avec succès
+    data_deleted: L'élément a bien été supprimé
+    failed_data_deleted_association: L'élément ne peut pas être supprimé car il contient 
+    validate_planning: L'élément n'est valide:
+    invalid_place: il y a déjà gardé un planning avec le même horaire dans le même lieu
+    invalid_educator: il y a déjà gardé un planning avec le même educateur dans le même horaire   
+
+button:
+    add: Ajouter
+    cancel: Annuler
+    confirm: Confirmer
+    remove: Supprimer
+    back: Retour
+
+days:
+    monday: Lundi
+    tuesday: Mardi
+    wednesday: Mercredi
+    thursday: Jeudi
+    friday: Vendredi
+    saturday: Samedi
+    sunday: Dimanche
+
+months: 
+    january: Janvier
+    february: Février
+    march: Mars
+    april: Avril
+    may: Mai
+    june: Juin
+    july: Juillet
+    august: Août
+    september: Septembre
+    october: Octobre
+    november: Novembre
+    december: Décembre
+
+pdf:
+    gender:
+        F: Madame
+        M: Monsieur

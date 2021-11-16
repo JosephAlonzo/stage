@@ -1,0 +1,31 @@
+{% if breadcrumbs is defined %}
+<style>
+  .breadcrumb-item a {
+    {# color: #6b0392 !important; #}
+  }
+  .breadcrumb-item.active a{
+    color: #f05b4f !important;
+    font-weight:bold  !important;
+  }
+</style>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb pl-5">
+    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">{{ 'label.home'|trans }}</a></li>
+    {% for breadcrumb in breadcrumbs %}
+        <li class="breadcrumb-item {{ breadcrumb.active }}" {% if breadcrumb.current == true %}aria-current="page"{% endif %}>
+
+        {% if breadcrumb.href is not empty %}
+        <a href="{{ breadcrumb.href }}">
+        {% endif %}
+        
+            {{ breadcrumb.name }}
+        
+        {% if breadcrumb.href is not empty %}
+        </a>
+        {% endif %}
+        
+        </li>
+    {% endfor %}
+  </ol>
+</nav>
+{% endif %}

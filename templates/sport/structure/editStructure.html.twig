@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% set entity = 'structure' %}
+{% if id == 'new' %}
+	{% set action = 'create' %}
+{% else %}
+	{% set action = 'update' %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ ('entity.general.crud.html.title_'~action ) |trans}}{{ ('entity.'~entity~'.article') |trans}} {{ ('entity.'~entity~'.singular') |trans}} {% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+<div class="row">
+	<div class="col">
+		<h2 class=""> 
+			{% if id != "new" %}
+				{{ ('entity.general.crud.update') |trans |capitalize}}  {{ ('entity.'~entity~'.singular') |trans}}
+			{% else %} 
+				{{ ('entity.general.crud.create') |trans |capitalize}} {{ ('entity.'~entity~'.article') |trans}} {{ ('entity.'~entity~'.singular') |trans}}
+			{% endif %}
+		</h2>
+	</div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm-12 col-md-12">
+		{{ form_start(form) }}
+			<div class="row">
+				<div class="col-12 col-md-6 offset-md-3 bg-white mr-4 p-4">
+					<h3>{{ (('entity.general.crud.information') |trans) |upper}}</h3>
+					{{ form_row(form.name) }}
+					{{ form_row(form.address) }}
+					{{ form_row(form.city) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.phoneNumber) }}
+
+                    <p class="text-danger">{{ ('entity.general.crud.required_fields') |trans}}</p>
+
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<a href="{{ path('structures_list') }}"><button type="button" class="btn btn-outline-secondary"><i class="fas fa-chevron-left">
+							</i>&nbsp;{{ ('button.back') |trans}} {{ ('entity.'~entity~'.article_plural') |trans}} {{ ('entity.'~entity~'.plural') |trans}}</button></a>
+						</div>
+						<div class="col-md-6 text-center">
+							{{ form_row(form.valider) }}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		{{ form_end(form) }}
+	</div>
+</div>
+</div>
+{% endblock %}

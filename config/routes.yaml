@@ -1,0 +1,335 @@
+homepage:
+    path: /
+    controller: App\Controller\Core\CoreController::homepage
+
+app_login:
+  path: /login
+  controller: App\Controller\Security\SecurityController::login
+
+app_logout:
+  path: /logout
+  controller: App\Controller\Security\SecurityController::logout
+
+users_list:
+  path: /users/list
+  controller: App\Controller\Security\SecurityController::usersList
+
+users_datatables_list:
+  path: /users/list/datatables
+  controller: App\Controller\Security\SecurityController::usersListDatatables
+
+edit_user:
+  path: /users/edit/{id}/{password}
+  controller: App\Controller\Security\SecurityController::editUser
+  defaults:
+    id: 'new'
+    password: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_user:
+    path: /users/del/{id}
+    controller: App\Controller\Security\SecurityController::userDelete  
+    requirements:
+        id: \d+
+
+activities_list:
+  path: /activities/list
+  controller: App\Controller\Sport\ActivityController::activitiesList
+
+activities_datatables_list:
+  path: /activities/list/datatables
+  controller: App\Controller\Sport\ActivityController::activitiesListDatatables
+
+edit_activity:
+  path: /activities/edit/{id}
+  controller: App\Controller\Sport\ActivityController::editActivity
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_activity:
+    path: /activities/del/{id}
+    controller: App\Controller\Sport\ActivityController::deleteActivity  
+    requirements:
+        id: \d+
+
+cities_list:
+  path: /cities/list
+  controller: App\Controller\Sport\CityController::citiesList
+
+cities_datatables_list:
+  path: /cities/list/datatables
+  controller: App\Controller\Sport\CityController::citiesListDatatables
+
+edit_city:
+  path: /cities/edit/{id}
+  controller: App\Controller\Sport\CityController::editCity
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_city:
+    path: /cities/del/{id}
+    controller: App\Controller\Sport\CityController::deleteCity  
+    requirements:
+        id: \d+
+
+social_workers_list:
+  path: /social_workers/list
+  controller: App\Controller\Sport\SocialWorkerController::socialWorkersList
+
+social_workers_datatables_list:
+  path: /social_workers/list/datatables
+  controller: App\Controller\Sport\SocialWorkerController::socialWorkersListDatatables
+
+edit_social_worker:
+  path: /social_workers/edit/{id}
+  controller: App\Controller\Sport\SocialWorkerController::editSocialWorker
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_social_worker:
+    path: /social_workers/del/{id}
+    controller: App\Controller\Sport\SocialWorkerController::deleteSocialWorker  
+    requirements:
+        id: \d+
+
+educators_list:
+  path: /educators/list
+  controller: App\Controller\Sport\EducatorController::educatorsList
+
+educators_datatables_list:
+  path: /educators/list/datatables
+  controller: App\Controller\Sport\EducatorController::educatorsListDatatables
+
+edit_educator:
+  path: /educators/edit/{id}
+  controller: App\Controller\Sport\EducatorController::editEducator
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_educator:
+    path: /educators/del/{id}
+    controller: App\Controller\Sport\EducatorController::deleteEducator  
+    requirements:
+        id: \d+
+
+structures_list:
+  path: /structures/list
+  controller: App\Controller\Sport\StructureController::structuresList
+
+structures_datatables_list:
+  path: /structures/list/datatables
+  controller: App\Controller\Sport\StructureController::structuresListDatatables
+
+edit_structure:
+  path: /structures/edit/{id}
+  controller: App\Controller\Sport\StructureController::editStructure
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_structure:
+  path: /structures/del/{id}
+  controller: App\Controller\Sport\StructureController::deleteStructure  
+  requirements:
+      id: \d+
+
+holidays_list:
+  path: /holidays/list
+  controller: App\Controller\Core\HolidayController::holidaysList
+
+holidays_datatables_list:
+  path: /holidays/list/datatables
+  controller: App\Controller\Core\HolidayController::holidaysListDatatables
+
+edit_holiday:
+  path: /holidays/edit/{id}
+  controller: App\Controller\Core\HolidayController::editHoliday
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+add_api_holiday:
+  path: /holidays/api
+  controller: App\Controller\Core\HolidayController::addApiHolidays
+
+delete_holiday:
+    path: /holidays/del/{id}
+    controller: App\Controller\Core\HolidayController::deleteHoliday  
+    requirements:
+        id: \d+
+
+plannings_list:
+  path: /plannings/list
+  controller: App\Controller\Sport\PlanningController::planningsList
+
+edit_planning:
+  path: /plannings/edit/{id}
+  controller: App\Controller\Sport\PlanningController::editPlanning
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_planning:
+  path: /plannings/del/{id}
+  controller: App\Controller\Sport\PlanningController::deletePlanning  
+  requirements:
+      id: \d+
+
+orientation_sheets_list:
+  path: /orientation_sheets/list
+  controller: App\Controller\Sport\OrientationSheetController::orientationSheetsList
+
+edit_orientation_sheet:
+  path: /orientation_sheets/edit/{id}
+  controller: App\Controller\Sport\OrientationSheetController::editOrientationSheet
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_orientation_sheet:
+  path: /orientation_sheets/del/{id}
+  controller: App\Controller\Sport\OrientationSheetController::deleteOrientationSheet  
+  requirements:
+    id: \d+
+
+orientation_sheets_datatables_list:
+  path: /orientation_sheets/list/datatables
+  controller: App\Controller\Sport\OrientationSheetController::OrientationSheetsListDatatables
+
+
+attendance_sheets_list:
+  path: /attendance_sheets/list
+  controller: App\Controller\Sport\AttendanceSheetController::attendanceSheetsList
+
+edit_attendance_sheet:
+  path: /attendance_sheets/edit/{id}
+  controller: App\Controller\Sport\AttendanceSheetController::editAttendanceSheet
+  
+delete_attendance_sheet:
+  path: /attendance_sheets/del/{id}
+  controller: App\Controller\Sport\AttendanceSheetController::deleteAttendanceSheet  
+  requirements:
+    id: \d+
+
+attendance_sheets_datatables_list:
+  path: /attendance_sheets/list/datatables
+  controller: App\Controller\Sport\AttendanceSheetController::AttendanceSheetsListDatatables
+
+attendance_sheets_datatables_list_details:
+  path: /attendance_sheets/list/datatables/details
+  controller: App\Controller\Sport\AttendanceSheetController::AttendanceSheetsListDatatablesDetails
+
+send_confirmation_mail_orientation_sheet:
+  path: /orientation_sheets/send/confirmation/{id}
+  controller: App\Controller\Sport\OrientationSheetController::sendConfirmationMailOrientationSheet  
+  requirements:
+    id: \d+
+
+attendance_sheets_getCharts:
+  path: /attendance_sheets/chart/{id}
+  controller: App\Controller\Sport\AttendanceSheetController::getDataChart
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \w+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+places_list:
+  path: /places/list
+  controller: App\Controller\Sport\PlaceController::placesList
+
+places_datatables_list:
+  path: /places/list/datatables
+  controller: App\Controller\Sport\PlaceController::placesListDatatables
+
+edit_place:
+  path: /places/edit/{id}
+  controller: App\Controller\Sport\PlaceController::editPlace
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_place:
+  path: /places/del/{id}
+  controller: App\Controller\Sport\PlaceController::deletePlace  
+  requirements:
+      id: \d+
+
+tenants_list:
+  path: /tenants/list
+  controller: App\Controller\Tenant\TenantController::tenantsList
+
+tenants_datatables_list:
+  path: /tenants/list/datatables
+  controller: App\Controller\Tenant\TenantController::tenantsListDatatables
+
+edit_tenant:
+  path: /tenants/edit/{id}
+  controller: App\Controller\Tenant\TenantController::editTenant
+  defaults:
+    id: 'new'
+    type: 'all'
+  requirements:
+    id: \d+
+    type: (my|all|new|acc|prog|fin|onl|test|clo|can)
+
+delete_tenant:
+  path: /tenants/del/{id}
+  controller: App\Controller\Tenant\TenantController::deleteTenant  
+  requirements:
+      id: \d+
+
+fullcalendar_events:
+  path: /fullCalendarEvents
+  controller: App\Controller\Sport\PlanningController::fullCalendarEvents
+
+fullcalendar_ressources:
+  path: /fullCalendarRessources
+  controller: App\Controller\Sport\PlanningController::fullCalendarRessources
+
+datatables_lang:
+  path: /datatables.lang
+  controller: App\Controller\Core\CoreController::datatablesLang
+
+test_view_pdf:
+  path: /pdf/{id}/{id2}
+  controller: App\Controller\Sport\OrientationSheetController::pdfTest 
+
+createImage:
+  path: /createImage/{color}/{text}
+  controller: App\Controller\Sport\OrientationSheetController::createImage 

@@ -1,0 +1,15 @@
+<div class="dropdown">
+    {% set currentParams = app.request.attributes.get('_route_params', {}) %}
+    <a id="languageDropdown" href="#" class="nav-link dropdown-toggle text-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="flag" src="{{ asset('build/images/' ~ app.request.locale ~ '.svg') }}" alt="{{ app.request.locale }}"/>
+        {{ 'language_name' | trans }}</a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for language in ['fr', 'en'] %}
+            {% set currentParams = currentParams|merge({'_locale': language}) %}
+            <li class="dropdown-item">
+            <a href="{{ path(app.request.attributes.get('_route'), currentParams) }}">
+            <img class="flag mr-1" src="{{ asset('build/images/'~language~'.svg') }}" alt="{{ 'language_name' | trans({}, 'messages', language) }}" title="{{ 'language_name' | trans({}, 'messages', language) }}"/>{{ 'language_name' | trans({}, 'messages', language) }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

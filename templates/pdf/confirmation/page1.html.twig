@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <style>
+        p {
+            font-family: 'Times new roman';
+            font-size: 12px;
+        }
+
+        .text-right{
+            text-align: right;
+        }
+
+        .text-center{
+            text-align: center;
+        }
+
+        .text-left{
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .info{
+            border: 2px solid #000000;
+            margin-left: auto;
+        }
+        {# 
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        } #}
+
+        {% if test  is defined  %}
+            body{
+                margin: 0px;
+                background-color: rgb(82, 86, 89);
+            }
+            .sheet{
+                background-color: #fff;
+                width: 50%;
+                margin: auto;
+                padding: 50pt 50pt;
+                height: 100%;
+            }
+        {% endif %}
+    </style>
+    <div class="sheet">
+
+    <table style="width:110%">
+        <tr>
+            <td rowspan="2" style="width:40%;">
+                <p class="header">
+                    <img src="{{ asset('/uploads/logos/logo.jpg') }}" alt="logo" width="200" height="250">
+                </p>
+            </td>
+            <td style="width:10%;"></td>    
+            <td style="width:40%; height: 110px"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="height: 50px">
+                <div class="info">
+                    <p>
+                    &nbsp;&nbsp;&nbsp;{{orientationSheet.beneficiary.name|lower|capitalize}} {{orientationSheet.beneficiary.lastName|upper}}<br>
+                    &nbsp;&nbsp;&nbsp;{{orientationSheet.beneficiary.address}}<br>
+                    &nbsp;&nbsp;&nbsp;{{orientationSheet.beneficiary.city.postalCode}} {{orientationSheet.beneficiary.city.name|lower|capitalize}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <p class="text-right" > À {{orientationSheet.socialWorker.structure.city.name}}, le {{ "now"|date("d")}} {{('months.'~"now"|date("F")|lower )|trans}}</p>
+
+    <p><i><u>Object:</u></i> Confirmation d'inscription au <i>dispositif Tremplin Sport</i></p>
+
+    <p><b>{{('pdf.gender.'~orientationSheet.beneficiary.gender )|trans}},</b></p>
+
+    <p class="first">Par la présente, nous vous confirmons votre inscription au dispositif TREMPLIN SPORT. </p>
+
+    <p>Vous vous étes inscrit(e) à/aux activité(s)
+    {% for key, element in orientationSheet.plannings %}
+        {% if element.confirmed %}
+        <b>{{element.planning.activity.name}}</b>{% if orientationSheet.plannings|length != key+1 %},{% else %}.{% endif %}
+        {% endif %}
+    {% endfor %}
+    Votre premiére séance aura lieu à partir du <b>{{orientationSheet.startDate|date("d")}} {{('months.'~orientationSheet.startDate|date("F")|lower )|trans}}.</b></p>
+
+    <p>Vous trouverez <b>au dos de ce courrier</b>, je programme indiquant le jour de pratique, l’horaire et le lieu.</p>
+
+    <p>Afin de pratiquer dans de bonnes conditions, nous vous rappelons qu’il vous est conseillé de venir avec une
+    tenue de sport adaptée, une paie de basket propre pour le gymnase ainsi qu’une bouteille d’eau.
+    </p>
+    <p><b>Infos pratiques:</b>
+    <br>
+    - En cas d’inscription a la piscine : penser a votre maillot de bain, un bonnet et une serviette de bain.<br>
+    - Veuillez prendre une paire de basket propre pour l’intérieur des salles et gymnases.<br>
+    - Activité Marche : le RDV se fait au jet d’eau de la pépiniére ou autre lieu indiqué par Jonas.<br>
+    - Pour la Self-Défense : entrée du Dojo se fait a l’arriére du batiment.<br>
+    - Il n’ya pas d’activité durant les jours fériés et les vacances scolaires.<br>
+    </p>
+    <p>En cas d’absence de votre part, merci de bien vouloir nous prévenir par téléphone ou mail.</p>
+    <p>Dans l’attente de vous voir, veuillez agréer, Madame, mes sincéres salutations.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    </div>
+</body>
+</html>
+

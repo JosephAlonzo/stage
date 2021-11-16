@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% set entity = 'holiday' %}
+
+{% block title %}{{ parent() }} - {{ 'entity.general.crud.html.title_read' |trans}} {{ ('entity.'~entity~'.plural') |trans}} {% endblock %}
+
+{% block css %}
+    {{parent()}}
+    tfoot {
+      display: table-header-group; 
+    }
+{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-between flex-wrap mt-3">
+    <div class="d-flex align-items-end flex-wrap">
+        <div class="mr-md-3 mr-xl-5">
+            <h2>{{ 'entity.general.crud.read' |trans}} {{ ('entity.'~entity~'.plural') |trans}}</h2>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-between flex-wrap mt-3">
+    <div class="d-flex align-items-end flex-wrap">
+        <div class="mr-md-3 mr-xl-5">
+            <a href="{{ path('edit_'~entity) }}" class="btn btn-primary">{{ 'button.add' |trans}} {{ ('entity.'~entity~'.article') |trans}} {{ ('entity.'~entity~'.singular') |trans}}</a>
+            <a href="{{ path('add_api_'~entity) }}" class="btn btn-primary">Ajouter jours fériés prédéfinies</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-sm-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover table-bordered table-striped table-sm datatables" id="holidaysList" data-pathlanguage="{{ path('datatables_lang') }}" data-pathroute="{{ path('holidays_datatables_list') }}">
+                    {% for tag_name in ['thead', 'tfoot'] %}
+                    <{{tag_name}}>
+                        <tr class="text-center text-blue-dark">
+                            <th>{{ ('entity.'~entity~'.table.name')|trans}}</th>
+                            <th>{{ ('entity.'~entity~'.table.startDate')|trans}}</th>
+                            <th>{{ ('entity.'~entity~'.table.endDate')|trans}}</th>
+                            <th>{{ 'entity.general.table.actions' |trans}}</th>
+                        </tr>
+                    </{{tag_name}}>
+                    {% endfor %}
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% include("_modalDelete.html.twig") %}
+</div>
+{% if body is defined %}
+    {{body}}
+{% endif %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	{{ encore_entry_script_tags('holidaysList') }}
+{% endblock %}
